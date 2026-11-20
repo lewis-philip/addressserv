@@ -1,0 +1,1188 @@
+@import "tailwindcss";
+@import "@toolwind/anchors";
+@import 'tailwind-animations';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "Play";
+  src: url("./assets/fonts/Play-Regular.ttf");
+};
+
+@theme {
+/* app font */
+  --font-app: "Play", "sans-serif";
+/* app */
+  --color-app: var(--color-white);
+  --color-appdark: var(--color-black);
+  /* app element background color: bg-app/10 dark:bg-appdark/20 hover:bg-app/10 */
+  /* app element background color for highlight: bg-app/10 dark:bg-app/10 */
+  --color-appbg: var(--color-white);
+  --color-appbgdark: var(--color-black);
+  --color-appicon: var(--color-orange-400);
+  --color-appicondialog: var(--color-amber-300);
+  --color-appprice: var(--color-blue-200);
+  --color-appactive: var(--color-blue-400);
+  --color-apperror: var(--color-red-400);
+  /* mobile screen min width 320px = 20rem */
+  --spacing-appmfw: 27rem;
+  --spacing-appmfmdw: 18rem;
+  --inset-shadow-lg: inset 0 0 12px rgba(0, 0, 0, 0.25);
+/* font */
+  --color-txtcolor: var(--color-white);
+/* loading spinner */
+  --color-loadingspinner: var(--color-blue-600);
+  --spacing-loadingspinner: 2rem;
+/* nav bar */
+  --spacing-navbarp: 0.6rem;
+  --spacing-navbarmdp: 0.4rem;
+/* logo */
+  --spacing-logo: 2rem;
+/* button - square */
+  --spacing-squarebnx: 0.5rem;
+  --spacing-squarebnmdx: 0.3rem;
+  --spacing-squarebnpx: 0.6rem;
+  --spacing-squarebnmdpx: 0.4rem;
+  --spacing-squarebnpy: 0.3rem;
+  --spacing-squarebnmdpy: 0.2rem;
+/* input - text/name/email/password */
+  --spacing-inputtextlabelpb: 0.5rem;
+  --spacing-inputtextlabelmdpb: 0.3rem;
+  --spacing-inputtexticonsize: 1.5rem;
+  --spacing-inputtexticonmdsize: 1.2rem;
+  --spacing-inputtextpy: 0.25rem;
+  --spacing-inputtextmdpy: 0.18rem;
+  --spacing-inputtextpx: 0.6rem;
+  --spacing-inputtextmdpx: 0.4rem;
+  --spacing-inputtextwithiconpx: calc(var(--spacing-inputtexticonsize) + 2 * var(--spacing-inputtextpx));
+  --spacing-inputtextwithiconmdpx: calc(var(--spacing-inputtexticonmdsize) + 2 * var(--spacing-inputtextmdpx));
+/* input - checkbox */
+  --spacing-checkboxbasesx: 0.7rem;
+  --spacing-checkboxbasemdsx: 0.6rem;
+  --spacing-checkboxsize: 1.5rem;
+  --spacing-checkboxmdsize: 1.3rem;
+/* input - checkbox fixed height base */
+  --spacing-checkboxbaseh: 6rem;
+  --spacing-checkboxbasemdh: 4.7rem;
+/* textarea */
+  --spacing-textarealabelpb: 0.5rem;
+  --spacing-textarealabelmdpb: 0.3rem;
+  --spacing-textareapy: 0.25rem;
+  --spacing-textareamdpy: 0.18rem;
+  --spacing-textareapx: 0.6rem;
+  --spacing-textareamdpx: 0.4rem;
+/* input - file */
+  --spacing-inputfilelabelpb: 0.5rem;
+  --spacing-inputfilelabelmdpb: 0.3rem;
+  --spacing-inputfilepy: 0.25rem;
+  --spacing-inputfilemdpy: 0.18rem;
+  --spacing-inputfilepx: 0.6rem;
+  --spacing-inputfilemdpx: 0.4rem;
+/* input - date */
+  --spacing-inputdatelabelpb: 0.5rem;
+  --spacing-inputdatelabelmdpb: 0.3rem;
+  --spacing-inputdatepy: 0.25rem;
+  --spacing-inputdatemdpy: 0.18rem;
+  --spacing-inputdatepx: 0.6rem;
+  --spacing-inputdatemdpx: 0.4rem;
+/* text - label-value */
+  --spacing-textvaluepl: 2rem;
+  --spacing-textvaluemdpl: 1.2rem;
+/* menu main x */
+  --spacing-menumainxsx: 0.25rem;
+/* menu main y base */
+  --spacing-menumainybasemw: 25rem;
+  --spacing-menumainybasep: 1rem;
+  --spacing-menumainybasesy: 1rem;
+/* menu main y */
+  --spacing-menumainysy: 1rem;
+/* button - menu user */
+  --spacing-menuuserbnp: 0.3rem;
+  --spacing-menuuserbnmdp: 0.2rem;
+  --spacing-menuuserbniconsize: 1.2rem;
+  --spacing-menuuserbnmdiconsize: 0.8rem;
+/* menu user base */
+  --spacing-menuuserbasemw: 32rem;
+  --spacing-menuuserbasesy: 0.25rem;
+  --spacing-menuuserbasemdsy: 0.13rem;
+/* menu user header */
+  --spacing-menuuserheaderp: 1rem;
+/* menu user footer */
+  --spacing-menuuserfooterp: 1rem;
+/* menu user base2 */
+  --spacing-menuuserbase2sx: 0.25rem;
+  --spacing-menuuserbase2mdsy: 0.13rem;
+/* menu user */
+  --spacing-menuuserp: 1rem;
+/* menu user item */
+  --spacing-menuuseritemsx: 0.7rem;
+  --spacing-menuuseritemmdsx: 0.5rem;
+  --spacing-menuuseritemiconsize: 1.2rem;
+  --spacing-menuuseritemmdiconsize: 1rem;
+/* button - icon button(s) */
+  --spacing-iconbnp: 0.7rem;
+  --spacing-iconbnmdp: 0.6rem;
+  --spacing-iconbniconsize: 1.4rem;
+  --spacing-iconbnmdiconsize: 1rem;
+/* content */
+  --spacing-contentmw: 72rem; /* 6xl = 72rem = 1152px */
+  --spacing-contentmdp: 0.4rem; /* 1rem = 16px */
+/* footer */
+  --spacing-footerp: 4rem;
+  --spacing-footermdp: 2rem;
+  --spacing-footersx: 4rem;
+  --spacing-footermdsx: 2rem;
+/* menu footer scroll y */
+  --spacing-menufooterscrollyw: 10rem;
+  --spacing-menufooterscrollymdw: 9rem;
+/* menu footer link y */
+  --spacing-menufooterlinkyw: 12rem;
+  --spacing-menufooterlinkymdw: 10rem;
+/* about us */
+  --spacing-aboutusp: 2rem;
+  --spacing-aboutusmdp: 1rem;
+  --spacing-aboutussy: 3rem;
+  --spacing-aboutusmdsy: 1.5rem;
+  --spacing-aboutusmt: 8rem;
+  --spacing-aboutusmdmt: 5rem;
+  --spacing-aboutusmb: 4rem;
+  --spacing-aboutusmdmb: 2.5rem;
+/* what we offer */
+  --spacing-whatweofferp: 2rem;
+  --spacing-whatweoffermdp: 0.5rem;
+  --spacing-whatweoffersy: 3rem;
+  --spacing-whatweoffermdsy: 1.5rem;
+  --spacing-whatweoffermt: 8rem;
+  --spacing-whatweoffermdmt: 5rem;
+  --spacing-whatweoffermb: 4rem;
+  --spacing-whatweoffermdmb: 2.5rem;
+/* service card (h = w * 1.4) */
+  --spacing-servicecardw: var(--spacing-appmfw);
+  --spacing-servicecardmdw: var(--spacing-appmfmdw);
+  --aspect-servicecardar:1/1.4;
+  --spacing-servicecardp: 2rem;
+  --spacing-servicecardmdp: 1rem;
+  --spacing-servicecardsy: 2rem;
+  --spacing-servicecardmdsy: 0.6rem;
+  --spacing-servicecardsx: 1rem;
+  --spacing-servicecardiconsize: 3rem;
+  --spacing-servicecardmdiconsize: 2rem;
+/* service item */
+  --spacing-serviceitemp: 2rem;
+  --spacing-serviceitemiconsize: 2rem;
+/* service list */
+  --spacing-servicelisth: calc(var(--spacing-servicecardw) * 1.4);
+  /* --spacing-servicelisth: calc(var(--spacing-servicecardw) * 1 / var(--aspect-servicecardar)); */
+/* what do you need */
+  --spacing-whatdoyouneedp: 2rem;
+  --spacing-whatdoyouneedmdp: 0.5rem;
+  --spacing-whatdoyouneedsy: 3rem;
+  --spacing-whatdoyouneedmdsy: 1.5rem;
+  --spacing-whatdoyouneedmt: 8rem;
+  --spacing-whatdoyouneedmdmt: 5rem;
+  --spacing-whatdoyouneedmb: 4rem;
+  --spacing-whatdoyouneedmdmb: 2.5rem;
+/* package carousel x */
+  --spacing-packagecarouselxsx: 0.4rem;
+  --spacing-packagecarouselxmdsx: 0.13rem;
+/* package card */
+  --spacing-packagecardw: var(--spacing-appmfw);
+  --spacing-packagecardmdw: var(--spacing-appmfmdw);
+  --spacing-packagecardsy: 0.25rem;
+  --spacing-packagecardmdsy: 0.13rem;
+/* package item */
+  --spacing-packageitempx: 1.2rem;
+  --spacing-packageitemmdpx: 0.6rem;
+  --spacing-packageitempy: 0.5rem;
+  --spacing-packageitemmdpy: 0.25rem;
+  --spacing-packageitemsx: 0.8rem;
+  --spacing-packageitemmdsx: 0.4rem;
+  --spacing-packageitemiconsize: 1.3rem;
+  --spacing-packageitemmdiconsize: 0.8rem;
+/* how we do it */
+  --spacing-howwedoitp: 2rem;
+  --spacing-howwedoitmdp: 0.5rem;
+  --spacing-howwedoitsy: 3rem;
+  --spacing-howwedoitmdsy: 1.5rem;
+  --spacing-howwedoitmt: 8rem;
+  --spacing-howwedoitmdmt: 5rem;
+  --spacing-howwedoitmb: 4rem;
+  --spacing-howwedoitmdmb: 2.5rem;
+/* faq */
+  --spacing-faqsy: 0.4rem;
+  --spacing-faqmdsy: 0.2rem;
+/* faq category*/
+  --spacing-faqcategoryp: 1rem;
+  --spacing-faqcategorymdp: 0.5rem;
+/* faq question */
+  --spacing-faqquestionpx: 1.5rem;
+  --spacing-faqquestionmdpx: 0.75rem;
+  --spacing-faqquestionpy: 0.7rem;
+  --spacing-faqquestionmdpy: 0.35rem;
+  --spacing-faqquestionsx: 1.5rem;
+  --spacing-faqquestionmdsx: 0.75rem;
+/* faq answer */
+  --spacing-faqanswerpx: 3rem;
+  --spacing-faqanswermdpx: 1.5rem;
+  --spacing-faqanswerpy: 0.7rem;
+  --spacing-faqanswermdpy: 0.35rem;
+/* flexibility */
+  --spacing-flexibilityp: 2rem;
+  --spacing-flexibilitymdp: 0.5rem;
+  --spacing-flexibilitysy: 3rem;
+  --spacing-flexibilitymdsy: 1.5rem;
+  --spacing-flexibilitymt: 8rem;
+  --spacing-flexibilitymdmt: 5rem;
+  --spacing-flexibilitymb: 4rem;
+  --spacing-flexibilitymdmb: 2.5rem;
+/* flexibility price */
+  --spacing-flexibilitypricesy: 0.4rem;
+  --spacing-flexibilitypricemdsy: 0.2rem;
+/* flexibility price item */
+  --spacing-flexibilitypriceitemsx: 0.6rem;
+  --spacing-flexibilitypriceitemmdsx: 0.3rem;
+  --spacing-flexibilitypriceitemp: 1rem;
+  --spacing-flexibilitypriceitemmdp: 0.5rem;
+/* flexibility price note */
+  --spacing-flexibilitypricenotep: 1rem;
+  --spacing-flexibilitypricenotemdp: 0.5rem;
+/* authentication */
+  --spacing-authw: var(--spacing-appmfw);
+  --spacing-authmdw: var(--spacing-appmfmdw);
+  --spacing-authimgw: 17rem;
+  --spacing-authp: 2rem;
+  --spacing-authmdp: 1rem;
+  --spacing-authheaderh: 5rem;
+  --spacing-authheadermdh: 4rem;
+  --spacing-authheadersy: 0.2rem;
+  --spacing-authheadermdsy: 0.1rem;
+  --spacing-authbodyh: 38rem;
+  --spacing-authbodymdh: 31rem;
+  --spacing-authbodysy: 1.4rem;
+  --spacing-authbodymdsy: 1rem;
+  --spacing-autherrorh: 3.7em;
+  --spacing-autherrormdh: 3.1rem;
+/* account page */
+  --spacing-accountpagesy: 1.2rem;
+  --spacing-accountpagemdsy: 0.7rem;
+/* account category base */
+  --spacing-accountcategorybasesy: 0.25rem;
+  --spacing-accountcategorybasemdsy: 0.13rem;
+/* customer type */
+  --spacing-customertypelabelpb: 0.5rem;
+  --spacing-customertypelabelmdpb: 0.3rem;
+  --spacing-customertypeiconsize: 1.5rem;
+  --spacing-customertypeiconmdsize: 1.2rem;
+  --spacing-customertypesy: 0.5rem;
+  --spacing-customertypemdsy: 0.3rem;
+/* person ID */
+  --spacing-personidiconsize: 1.5rem;
+  --spacing-personidiconmdsize: 1.2rem;
+/* dialog base */
+  --spacing-dialogbasep: 1.8rem;
+  --spacing-dialogbasemdp: 1.3rem;
+  --spacing-dialogbasesy: 1.8rem;
+  --spacing-dialogbasemdsy: 1.3rem;
+/* dialog */
+  --spacing-dialogp: 1.3rem;
+  --spacing-dialogmdp: 1rem;
+  --spacing-dialogsx: 1.3rem;
+  --spacing-dialogmdsx: 1rem;
+  --spacing-dialogiconsize: 4rem;
+/* pkg card */
+  --spacing-pkgcardgridgap: 2rem;
+  --spacing-pkgcardgridmdgap: 1.5rem;
+  --spacing-pkgcardw: var(--spacing-appmfw);
+  --spacing-pkgcardmdw: var(--spacing-appmfmdw);
+  --spacing-pkgcardserviceh: 24rem;
+  --spacing-pkgcardservicemdh: 20rem;
+  --spacing-pkgcardserviceitemiconsize: 1.2rem;
+  --spacing-pkgcardserviceitemiconmdsize: 0.9rem;
+  --spacing-pkgcardproducth: 18rem;
+  --spacing-pkgcardproductmdh: 14.5rem;
+  --spacing-pkgcardproductnamep: 0.5rem;
+  --spacing-pkgcardproductnamemdp: 0.25rem;
+  --spacing-pkgcardatebasesx: 1.5rem;
+  --spacing-pkgcardatebasemdsx: 1rem;
+  --spacing-pkgcardatesy: 0.8rem;
+  --spacing-pkgcardatemdsy: 0.5rem;
+};
+
+@layer base {
+  h1 {@apply font-app max-md:text-4xl md:text-5xl text-txtcolor};
+  h2 {@apply font-app max-md:text-3xl md:text-4xl text-txtcolor};
+  h3 {@apply font-app max-md:text-2xl md:text-3xl text-txtcolor};
+  h4 {@apply font-app max-md:text-xl md:text-2xl text-txtcolor};
+  h5 {@apply font-app max-md:text-lg md:text-xl text-txtcolor};
+  h6 {@apply font-app max-md:text-base md:text-lg text-txtcolor};
+  p {@apply font-app max-md:text-xs md:text-base text-txtcolor};
+  input[type="date"]::-webkit-calendar-picker-indicator {filter: invert(100%) sepia(100%) saturate(10000%) hue-rotate(300deg);};
+};
+
+.loadingspinner {
+  @apply
+  flex w-full h-screen
+;};
+.mainnav {
+  @apply
+  relative
+  flex flex-col
+  min-h-screen
+  bg-appbg dark:bg-appbgdark
+;};
+.mainoutlet {
+  @apply
+  z-10
+  w-full
+  bg-transparent
+;};
+.navbarbase {
+  @apply
+  z-100 
+  sticky top-0
+  md:p-navbarp
+  bg-transparent backdrop-blur-sm
+  anchor/navbarasanchor
+  animate-fade-in-down animate-delay-1200 animate-duration-1200
+;};
+.navbarborder {
+  @apply
+  md:p-navbarp
+  md:border-2 md:border-app/10 md:dark:border-appdark/20
+;};
+.navbar {
+  @apply
+  flex justify-between items-center
+  max-md:p-navbarmdp md:p-navbarp
+  bg-app/10 dark:bg-appdark/20
+;};
+.logo {
+  @apply
+  flex flex-row items-center space-x-4
+;};
+.hiuser {
+  @apply
+  flex flex-row items-center space-x-2
+;};
+.buttonicon {
+  @apply
+  rounded-full
+  max-md:p-iconbnmdp md:p-iconbnp
+  text-txtcolor hover:bg-app/10
+  cursor-pointer
+;};
+.buttoniconicon {
+  @apply
+  max-md:size-iconbnmdiconsize md:size-iconbniconsize
+;};
+.modal {
+  @apply
+  fixed inset-0 z-110 bg-white opacity-0
+;};
+.modalblack {
+  @apply
+  fixed 
+  z-110 bg-black/70
+  flex items-center justify-center
+  min-h-screen min-w-screen
+;};
+.squarebutton {
+  @apply
+  flex justify-center items-center
+  max-md:px-squarebnmdpx md:px-squarebnpx max-md:py-squarebnmdpy md:py-squarebnpy
+  font-bold text-txtcolor
+  hover:bg-app/10
+  rounded-sm border-2 border-txtcolor
+  cursor-pointer
+  disabled:bg-transparent disabled:cursor-default 
+;};
+.squarebuttonwithiconbase {
+  @apply
+  flex justify-center items-center
+  max-md:space-x-squarebnmdx md:space-x-squarebnx
+;};
+.inputtextbase {
+  @apply
+  flex flex-col justify-start items-stretch
+;};
+.inputtextlabel {
+  @apply
+  font-bold
+  max-md:pb-inputtextlabelmdpb md:pb-inputtextlabelpb
+;};
+.inputtextbox {
+  @apply
+  relative flex justify-stretch items-center
+;};
+.inputtext {
+  @apply
+  w-full
+  font-app
+  max-md:text-base md:text-lg
+  max-md:py-inputtextmdpy md:py-inputtextpy
+  rounded-sm outline-2
+  hover:bg-app/10 focus:bg-app/10
+;};
+.inputtexticon {
+  @apply
+  absolute
+  max-md:left-inputtextmdpx md:left-inputtextpx
+  max-md:size-inputtexticonmdsize md:size-inputtexticonsize
+  text-appicon
+;};
+.inputtexticonswitch {
+  @apply
+  absolute
+  max-md:right-inputtextmdpx md:right-inputtextpx
+  max-md:size-inputtexticonmdsize md:size-inputtexticonsize
+  text-txtcolor
+  cursor-pointer
+;};
+.checkboxbase {
+  @apply
+  flex justify-start items-center
+  max-md:space-x-checkboxbasemdsx md:space-x-checkboxbasesx
+;};
+.checkbox {
+  @apply
+  relative
+  appearance-none
+  max-md:size-checkboxmdsize md:size-checkboxsize
+  border-2 rounded-sm border-txtcolor hover:border-appactive focus:border-appactive
+  hover:bg-app/10 focus:bg-app/10
+  cursor-pointer
+;};
+.checkedicon {
+  @apply
+  absolute
+  max-md:size-checkboxmdsize md:size-checkboxsize
+  text-txtcolor
+  pointer-events-none
+;};
+.checkboxlabel {
+  @apply
+  font-bold
+;};
+.checkboxbasefixedheight {
+  @apply
+  flex flex-col justify-center items-stretch
+  max-md:h-checkboxbasemdh md:h-checkboxbaseh
+;};
+.textareabase {
+  @apply
+  flex flex-col justify-start items-stretch
+;};
+.textarealabel {
+  @apply
+  font-bold
+  max-md:pb-textarealabelmdpb md:pb-textarealabelpb
+;};
+.textarea {
+  @apply
+  w-full
+  font-app
+  max-md:text-base md:text-lg
+  max-md:px-textareamdpx md:px-textareapx
+  max-md:py-textareamdpy md:py-textareapy
+  rounded-sm outline-2
+  hover:bg-app/10 focus:bg-app/10
+;};
+.inputfilebase {
+  @apply
+  flex flex-col justify-start items-stretch
+;};
+.inputfilelabel {
+  @apply
+  font-bold
+  max-md:pb-inputfilelabelmdpb md:pb-inputfilelabelpb
+;};
+.inputfile {
+  @apply
+  w-full
+  font-app
+  max-md:text-base md:text-lg
+  max-md:px-inputfilemdpx md:px-inputfilepx
+  max-md:py-inputfilemdpy md:py-inputfilepy
+  rounded-sm outline-2
+  hover:bg-app/10 focus:bg-app/10
+;};
+.textbase {
+  @apply
+  flex flex-col justify-start items-stretch
+  max-md:p-contentmdp md:p-navbarp
+  border border-app/20
+;};
+.textbase2 {
+  @apply
+  flex flex-col justify-start items-stretch
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-y-contentmdp md:space-y-navbarp
+  border border-app/20
+;};
+.textvalue {
+  @apply
+  font-bold
+  max-md:pl-textvaluemdpl md:pl-textvaluepl
+;};
+.inputdatebase {
+  @apply
+  flex flex-col justify-start items-stretch
+;};
+.inputdatelabel {
+  @apply
+  font-bold
+  max-md:pb-inputdatelabelmdpb md:pb-inputdatelabelpb
+;};
+.inputdate {
+  @apply
+  w-full
+  font-app
+  max-md:text-base md:text-lg
+  max-md:px-inputdatemdpx md:px-inputdatepx
+  max-md:py-inputdatemdpy md:py-inputdatepy
+  rounded-sm outline-2
+  hover:bg-app/10 focus:bg-app/10
+;};
+.linex1base {
+  @apply
+  flex justify-center items-center
+  max-md:px-contentmdp md:px-navbarp
+  bg-app/10 dark:bg-appdark/20
+;};
+.linex1 {
+  @apply
+  w-full border-app/20
+;};
+.menumainx {
+  @apply
+  flex justify-center items-center
+  space-x-menumainxsx
+;};
+.menumainxitem {
+  @apply
+  flex justify-center items-center
+  max-md:px-squarebnmdpx md:px-squarebnpx max-md:py-squarebnmdpy md:py-squarebnpy
+  font-bold text-txtcolor
+  hover:bg-app/10
+  rounded-sm
+  cursor-pointer
+;};
+.menumainybase {
+  @apply
+  flex flex-col w-full max-w-menumainybasemw
+  z-120
+  p-menumainybasep
+  space-y-menumainybasesy
+  bg-app/10 dark:bg-appdark/20 backdrop-blur-sm
+  anchored/navbarasanchor left-anchor-left-0 top-anchor-bottom-0 try-flip-all
+  animate-fade-in-right animate-duration-1200
+;};
+.menumainy {
+  @apply
+  flex flex-col justify-center items-stretch
+  space-y-menumainysy
+;};
+.menumainyitem {
+  @apply
+  flex justify-center items-center
+  max-md:px-squarebnmdpx md:px-squarebnpx max-md:py-squarebnmdpy md:py-squarebnpy
+  font-bold text-txtcolor
+  bg-app/10 dark:bg-appdark/10
+  hover:bg-app/10
+  rounded-sm
+  cursor-pointer
+;};
+.menuuserbutton {
+  @apply
+  rounded-md
+  max-md:p-menuuserbnmdp md:p-menuuserbnp
+  text-txtcolor hover:bg-app/10
+  border-2 border-txtcolor
+  cursor-pointer
+;};
+.menuuserbuttonicon {
+  @apply
+  max-md:size-menuuserbnmdiconsize md:size-menuuserbniconsize
+;};
+.menuuserbase {
+  @apply
+  z-120
+  flex flex-col
+  w-full max-w-menuuserbasemw 
+  max-md:space-y-menuuserbasemdsy md:space-y-menuuserbasesy
+  backdrop-blur-sm
+  anchored/navbarasanchor max-md:right-anchor-right-0 md:right-anchor-right-2.5 top-anchor-bottom-2.5 try-flip-all
+  animate-fade-in-down animate-duration-1200
+;};
+.menuuserheader {
+  @apply
+  flex flex-col justify-center
+  p-menuuserheaderp
+  bg-app/10 dark:bg-appdark/20 
+;};
+.menuuserfooter {
+  @apply
+  flex justify-center items-center
+  p-menuuserfooterp
+  bg-app/10 dark:bg-appdark/20
+;};
+.menuuserbase2 {
+  @apply
+  flex max-md:flex-col justify-stretch items-stretch
+  max-md:space-y-menuuserbase2mdsy md:space-x-menuuserbase2sx
+;};
+.menuuser {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  w-full
+  p-menuuserp
+  bg-app/10 dark:bg-appdark/20 
+;};
+.menuuseritem {
+  @apply
+  flex justify-center items-center
+  max-md:px-squarebnmdpx md:px-squarebnpx max-md:py-squarebnmdpy md:py-squarebnpy
+  max-md:space-x-menuuseritemmdsx md:space-x-menuuseritemsx
+  hover:bg-app/10
+  rounded-sm
+  cursor-pointer
+;};
+.menuuseritemicon {
+  @apply
+  max-md:size-menuuseritemmdiconsize md:size-menuuseritemiconsize
+  text-appicon 
+;};
+.imagemain {
+  @apply
+  z-1
+  fixed top-0 
+  w-full h-full object-cover
+;};
+.footerbase {
+  @apply
+  z-90
+  md:p-navbarp
+  bg-transparent backdrop-blur-sm
+;};
+.footerborder {
+  @apply
+  md:p-navbarp
+  md:border-2 md:border-app/10 md:dark:border-appdark/20
+;};
+.footer {
+  @apply
+  flex justify-center items-start
+  max-md:p-footermdp md:p-footerp
+  max-md:space-x-footermdsx md:space-x-footersx
+  bg-app/10 dark:bg-appdark/20
+;};
+.menufooterscrolly {
+  @apply
+  max-md:hidden
+  flex flex-col justify-start items-stretch
+  max-md:w-menufooterscrollymdw md:w-menufooterscrollyw
+;};
+.menufooterlinky {
+  @apply
+  flex flex-col justify-start items-stretch
+  max-md:w-menufooterlinkymdw md:w-menufooterlinkyw
+;};
+.menufooteryitem {
+  @apply
+  flex justify-start items-center
+  w-full
+  max-md:px-squarebnmdpx md:px-squarebnpx max-md:py-squarebnmdpy md:py-squarebnpy
+  text-txtcolor
+  hover:bg-app/10
+  rounded-sm
+  cursor-pointer
+;};
+.videohome {
+  @apply
+  z-0
+  fixed top-0
+  w-full h-full
+  object-cover
+;};
+.home {
+  @apply
+  z-1
+  w-full max-w-contentmw justify-self-center
+  flex flex-col justify-stretch items-stretch
+  max-md:p-contentmdp
+  bg-transparent
+;};
+.aboutusbase {
+  @apply
+  grid max-md:grid-cols-1 md:grid-cols-2
+  justify-center items-center
+  max-md:mt-aboutusmdmt md:mt-aboutusmt
+  max-md:mb-aboutusmdmb md:mb-aboutusmb
+;};
+.aboutus {
+  @apply
+  flex flex-col items-end
+  max-md:p-aboutusmdp md:p-aboutusp
+  max-md:space-y-aboutusmdsy md:space-y-aboutussy
+  border-r-2 border-b-2 border-app/10 dark:border-appdark/20
+;};
+.whatweoffer {
+  @apply
+  flex flex-col items-start
+  max-md:p-whatweoffermdp md:p-whatweofferp
+  max-md:space-y-whatweoffermdsy md:space-y-whatweoffersy
+  border-l-2 border-b-2 border-app/10 dark:border-appdark/20
+  max-md:mt-whatweoffermdmt md:mt-whatweoffermt
+  max-md:mb-whatweoffermdmb md:mb-whatweoffermb
+;};
+.servicebase {
+  @apply
+  flex justify-center items-center
+  max-md:w-packagecardmdw md:w-full
+  space-x-1
+  bg-transparent backdrop-blur-sm
+;};
+.servicecarouselx {
+  @apply
+  max-md:w-servicecardmdw md:w-servicecardw aspect-servicecardar
+;};
+.servicecarousely {
+  @apply
+  flex flex-col
+  w-full h-servicelisth
+;};
+.servicecard {
+  @apply
+  flex flex-col justify-center items-center
+  max-md:w-servicecardmdw md:w-servicecardw
+  max-md:p-servicecardmdp md:p-servicecardp
+  max-md:space-y-servicecardmdsy md:space-y-servicecardsy md:space-x-servicecardsx
+  bg-app/10 dark:bg-appdark/20
+;};
+.servicecardicon {
+  @apply
+  max-md:size-servicecardmdiconsize md:size-servicecardiconsize
+  text-appicon
+;};
+.serviceitem {
+  @apply
+  flex justify-center items-center
+  p-serviceitemp
+  bg-app/10 dark:bg-appdark/20
+;};
+.serviceitemicon {
+  @apply
+  size-serviceitemiconsize
+  text-appicon 
+;};
+.whatdoyouneed {
+  @apply
+  flex flex-col items-end
+  max-md:p-whatdoyouneedmdp md:p-whatdoyouneedp
+  max-md:space-y-whatdoyouneedmdsy md:space-y-whatdoyouneedsy
+  border-r-2 border-b-2 border-app/10 dark:border-appdark/20
+  max-md:mt-whatdoyouneedmdmt md:mt-whatdoyouneedmt
+  max-md:mb-whatdoyouneedmdmb md:mb-whatdoyouneedmb
+;};
+.packagebase {
+  @apply
+  flex justify-center items-center
+  max-md:w-packagecardmdw md:w-full
+  bg-transparent backdrop-blur-sm
+;};
+.packagecarouselx {
+  @apply
+  flex
+  max-md:w-packagecardmdw md:w-full
+;};
+.packagecarouselxnav {
+  @apply
+  top-0 px-2 py-3 md:hidden
+  flex justify-between
+  w-full
+  bg-transparent
+;};
+.packagecard {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:w-packagecardmdw md:w-packagecardw
+  max-md:space-y-packagecardmdsy md:space-y-packagecardsy
+;};
+.packageitem {
+  @apply
+  flex justify-stretch items-stretch
+  max-md:px-packageitemmdpx md:px-packageitempx max-md:py-packageitemmdpy md:py-packageitempy
+  max-md:space-x-packageitemmdsx md:space-x-packageitemsx
+;};
+.packageitemicon {
+  @apply
+  max-md:size-packageitemmdiconsize md:size-packageitemiconsize
+;};
+.packagename {
+  @apply
+  max-md:p-2 md:p-5
+  bg-app/10 dark:bg-appdark/20
+  font-bold text-center
+;};
+.howwedoit {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:p-howwedoitmdp md:p-howwedoitp
+  max-md:space-y-howwedoitmdsy md:space-y-howwedoitsy
+  border-l-2 border-b-2 border-app/10 dark:border-appdark/20
+  max-md:mt-howwedoitmdmt md:mt-howwedoitmt
+  max-md:mb-howwedoitmdmb md:mb-howwedoitmb
+;};
+.faqbase {
+  @apply
+  md:relative
+  flex flex-col justify-stretch items-stretch
+  bg-transparent backdrop-blur-sm
+;};
+.faq {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:space-y-faqmdsy md:space-y-faqsy
+  md:h-servicelisth md:overflow-y-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden
+;};
+.faqlist {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:space-y-faqmdsy md:space-y-faqsy
+;};
+.faqcategory {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:p-faqcategorymdp md:p-faqcategoryp
+;};
+.faqitem {
+  @apply
+  flex flex-col justify-stretch items-stretch
+;};
+.faqquestion {
+  @apply
+  flex justify-between items-center
+  max-md:px-faqquestionmdpx md:px-faqquestionpx max-md:py-faqquestionmdpy md:py-faqquestionpy
+  max-md:space-x-faqquestionmdsx md:space-x-faqquestionsx
+  bg-app/10 dark:bg-appdark/20
+;};
+.faqanswer {
+  @apply
+  flex justify-stretch items-center
+  max-md:px-faqanswermdpx md:px-faqanswerpx max-md:py-faqanswermdpy md:py-faqanswerpy
+  bg-app/10 dark:bg-appdark/20
+  animate-fade-in-down animate-duration-1000
+;};
+.flexibility {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:p-flexibilitymdp md:p-flexibilityp
+  max-md:space-y-flexibilitymdsy md:space-y-flexibilitysy
+  border-r-2 border-b-2 border-app/10 dark:border-appdark/20
+  max-md:mt-flexibilitymdmt md:mt-flexibilitymt
+  max-md:mb-flexibilitymdmb md:mb-flexibilitymb
+;};
+.flexibilitypricebase {
+  @apply
+  md:relative
+  flex flex-col justify-stretch items-stretch
+  bg-transparent backdrop-blur-sm
+;};
+.flexibilityprice {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:space-y-flexibilitypricemdsy md:space-y-flexibilitypricesy
+  md:h-servicelisth md:overflow-y-auto md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden
+;};
+.flexibilitypriceitem {
+  @apply
+  flex justify-between items-center
+  max-md:w-full md:w-1/3
+  bg-app/10 dark:bg-app/10
+  max-md:p-flexibilitypriceitemmdp md:p-flexibilitypriceitemp 
+  max-md:space-x-flexibilitypriceitemmdsx md:space-x-flexibilitypriceitemsx
+;};
+.flexibilitypricenote {
+  @apply
+  flex justify-stretch items-center
+  max-md:w-full md:w-2/3
+  bg-app/10 dark:bg-appdark/20
+  max-md:p-flexibilitypricenotemdp md:p-flexibilitypricenotep
+;};
+.authbase {
+  @apply
+  flex justify-center items-center
+  bg-transparent backdrop-blur-sm
+;};
+.authimg {
+  @apply
+  max-md:hidden
+  w-authimgw
+  object-cover
+;};
+.auth {
+  @apply
+  flex flex-col
+  max-md:w-authmdw md:w-authw
+  max-md:p-authmdp md:p-authp
+  bg-app/10 dark:bg-appdark/20
+;};
+.authheader {
+  @apply
+  flex flex-col justify-start items-stretch
+  max-md:h-authheadermdh md:h-authheaderh
+  max-md:space-y-authheadermdsy md:space-y-authheadersy
+;};
+.authbody {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:h-authbodymdh md:h-authbodyh
+  max-md:space-y-authbodymdsy md:space-y-authbodysy
+;};
+.authbody2 {
+  @apply
+  h-full
+  flex flex-col justify-stretch items-stretch
+  max-md:space-y-authbodymdsy md:space-y-authbodysy
+;};
+.authbody3 {
+  @apply
+  flex flex-col justify-stretch items-stretch
+;};
+.authbutton {
+  @apply
+  flex flex-col justify-stretch items-stretch
+  max-md:space-y-authbodymdsy md:space-y-authbodysy
+;};
+.autherror {
+  @apply
+  max-md:h-autherrormdh md:h-autherrorh
+  overflow-hidden
+;};
+.glassframebase {
+  @apply
+  md:p-navbarp
+  bg-transparent backdrop-blur-sm
+;};
+.glassframe {
+  @apply
+  md:p-navbarp
+  md:border-2 md:border-app/10 md:dark:border-appdark/20
+;};
+.accountpage {
+  @apply
+  flex flex-col justify-self-center
+  w-full max-w-contentmw
+  max-md:p-contentmdp
+  max-md:space-y-accountpagemdsy md:space-y-accountpagesy
+  bg-transparent
+;};
+.accountcategorybase {
+  @apply
+  flex flex-col
+  max-md:space-y-accountcategorybasemdsy md:space-y-accountcategorybasesy
+;};
+.accountcategorybase2 {
+  @apply
+  flex flex-col
+;};
+.accountcategoryswitch {
+  @apply
+  flex justify-between items-center
+  max-md:p-contentmdp md:p-navbarp
+  bg-app/10 dark:bg-appdark/20
+;};
+.accountcategorygrid {
+  @apply
+  grid max-md:grid-cols-1 md:grid-cols-2
+  justify-center items-center
+  max-md:p-contentmdp md:p-navbarp
+  bg-app/10 dark:bg-appdark/20
+;};
+.accountcategory {
+  @apply
+  flex flex-col
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-y-contentmdp md:space-y-navbarp
+;};
+.accountcategoryx {
+  @apply
+  flex
+  max-md:space-x-contentmdp md:space-x-navbarp
+;};
+.buttonboxx {
+  @apply
+  flex items-center
+  max-md:space-x-contentmdp md:space-x-navbarp
+  max-md:p-contentmdp md:p-navbarp
+  bg-app/10 dark:bg-appdark/20
+;};
+.buttonbox2x {
+  @apply
+  flex items-center
+  max-md:space-x-contentmdp md:space-x-navbarp
+;};
+.buttonboxxerrmsg {
+  @apply
+  flex flex-col justify-stretch items-stretch
+;};
+.customertypebase {
+  @apply
+  flex flex-col justify-center items-stretch
+;};
+.customertypelabel {
+  @apply
+  font-bold
+  max-md:pb-customertypelabelmdpb md:pb-customertypelabelpb
+;};
+.customertype {
+  @apply
+  flex justify-center items-stretch
+  border
+  max-md:space-x-contentmdp md:space-x-navbarp
+  max-md:p-contentmdp md:p-navbarp
+;};
+.customertypeitem {
+  @apply
+  flex justify-start items-center
+  h-full
+  max-md:space-x-contentmdp md:space-x-navbarp
+  max-md:p-contentmdp md:p-navbarp
+  rounded-sm border hover:border-appactive
+  hover:bg-app/10 focus:bg-app/10
+;};
+.customertypeicon {
+  @apply
+  max-md:size-customertypeiconmdsize md:size-customertypeiconsize
+  text-appicon 
+;};
+.customertypey {
+  @apply
+  flex flex-col justify-center items-stretch
+  max-md:space-y-customertypemdsy md:space-y-customertypesy
+;};
+.personidbase {
+  @apply
+  flex flex-col justify-start items-stretch
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-y-contentmdp md:space-y-navbarp
+  border border-app/20
+;};
+.personid {
+  @apply
+  flex flex-col justify-center items-stretch
+  max-md:space-y-contentmdp md:space-y-navbarp
+;};
+.personiditem {
+  @apply
+  flex justify-start items-center
+  max-md:space-x-contentmdp md:space-x-navbarp
+  max-md:p-contentmdp md:p-navbarp
+  rounded-sm
+  border border-app/20
+;};
+.personidicon {
+  @apply
+  max-md:size-personidiconmdsize md:size-personidiconsize
+  text-appicon
+;};
+.fileviewbase {
+  @apply
+  relative
+  place-self-center
+  max-md:max-w-[95vw] max-md:max-h-[95vh] md:max-w-[80vw] md:max-h-[80vh]
+  bg-transparent
+;};
+.dialogbase {
+  @apply
+  flex flex-col place-self-center justify-center items-stretch
+  max-md:max-w-[95vw] md:max-w-140
+  max-md:p-dialogbasemdp md:p-dialogbasep
+  max-md:space-y-dialogbasemdsy md:space-y-dialogbasesy
+  bg-app/20
+;};
+.dialog {
+  @apply
+  flex justify-start items-center
+  max-md:p-dialogmdp md:p-dialogp
+  max-md:space-x-dialogmdsx md:space-x-dialogsx
+  rounded-sm border border-app/30
+;};
+.dialogicon {
+  @apply
+  size-dialogiconsize
+;};
+.packagedatebase {
+  @apply
+  flex flex-col justify-start items-stretch
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-y-contentmdp md:space-y-navbarp
+  border border-app/20
+;};
+.packagedateedit {
+  @apply
+  flex items-start
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-x-pkgcardatebasemdsx md:space-x-pkgcardatebasesx
+  border border-app/20
+;};
+.pkgcardgrid {
+  @apply
+  grid max-lg:grid-cols-1 lg:grid-cols-2
+  max-md:p-contentmdp md:p-navbarp
+  max-md:gap-pkgcardgridmdgap md:gap-pkgcardgridgap
+  bg-app/10 dark:bg-appdark/20
+;};
+.pkgcardbase {
+  @apply
+  flex flex-col justify-stretch items-stretch justify-self-center 
+  max-md:w-pkgcardmdw md:w-pkgcardw 
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-y-contentmdp md:space-y-navbarp
+  border border-app
+;};
+.pkgcardservice {
+  @apply
+  flex flex-col justify-center items-stretch
+  max-md:h-pkgcardservicemdh md:h-pkgcardserviceh
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-y-contentmdp md:space-y-navbarp
+  border
+;};
+.pkgcardserviceitem {
+  @apply
+  flex justify-start items-center
+  max-md:space-x-contentmdp md:space-x-navbarp
+;};
+.pkgcardserviceitemicon {
+  @apply
+  max-md:size-pkgcardserviceitemiconmdsize md:size-pkgcardserviceitemiconsize
+  text-appicon
+;};
+.pkgcardproduct {
+  @apply
+  flex flex-col justify-center items-center
+  max-md:h-pkgcardproductmdh md:h-pkgcardproducth 
+  max-md:p-contentmdp md:p-navbarp
+  max-md:space-y-contentmdp md:space-y-navbarp
+  cursor-pointer
+  border hover:border-appactive
+;};
+.pkgcardnoproduct {
+  @apply
+  flex flex-col justify-center items-center
+  max-md:h-pkgcardproductmdh md:h-pkgcardproducth 
+  max-md:p-contentmdp md:p-navbarp
+  border border-app/20
+;};
+.pkgcardproductname {
+  @apply
+  max-md:p-pkgcardproductnamemdp md:p-pkgcardproductnamep
+  font-bold text-center
+;};
+.pkgcardate {
+  @apply
+  flex flex-col justify-start
+  max-md:space-y-pkgcardatemdsy md:space-y-pkgcardatesy
+;};
+
